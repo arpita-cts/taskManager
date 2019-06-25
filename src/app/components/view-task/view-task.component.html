@@ -1,0 +1,65 @@
+<app-header></app-header>
+<div class="container">
+
+    <div class="row">
+        <div class="col-sm-6">
+        
+            <label for="task"><b>Task</b></label>
+            <input type="text" placeholder="Add Task" name="task" required>
+          
+        </div>
+        <div class="col-sm-6">
+            <label for="task"><b>Parent Task</b></label>
+            <input type="text" placeholder="Add Task" name="parentTask" required>
+        </div>
+        
+      </div>
+      <div class="row">
+        <div class="col-sm-3">
+        
+            <label for="task"><b>Priority From</b></label>
+            <input type="text" placeholder="Priority From" name="priorFrom" required>
+          
+        </div>
+        <div class="col-sm-3">
+            <label for="task"><b>Priority To</b></label>
+            <input type="text" placeholder="Priority to" name="priorTo" required>
+        </div>
+        <div class="col-sm-3">
+            <label for="task"><b>Start Date</b></label>
+            <input type="text" placeholder="Start Date" name="strtDate" required>
+        </div>
+        <div class="col-sm-3">
+            <label for="task"><b>End Date</b></label>
+            <input type="text" placeholder="end Date" name="endDate" required>
+        </div>
+        
+      </div>
+      <hr>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Task</th>
+            <th>Parent</th>
+            <th>Priority</th>
+            <th>Start</th>
+            <th>End</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let task of tasks">
+          <tr>
+            <td>{{task.task}}</td>
+            <td>{{task.parent.parentTask}}</td>
+            <td>{{task.priority}}</td>
+            <td>{{task.startDate}}</td>
+            <td>{{task.endDate}}</td>
+            <td><button type="button"  (click)="editTask(task)" [disabled]="task.deleteFlag == 1">Edit</button></td>
+            <td><button type="button"  (click)="endTask(task)" [disabled]="task.deleteFlag == 1">End Task</button></td>
+          </tr>
+         
+        </tbody>
+      </table>
+</div>
